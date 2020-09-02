@@ -1,65 +1,54 @@
 import React,{useState} from 'react'
-import Page from './Page'
+import Editing from './Editing'
 
-function App (){
+function Page (props){
 
-  const id = idMax();
-  const [title, setTitle] = useState('');
-  const [url, setUrl] = useState('');
-  const [text, setText] = useState('');
-  const creatAtTime = new Date().toLocaleString();
-  const editing = false;
-  const [posts,setPosts] = useState ([]);
-  const [course, setCourse]= useState(true);
-
-  function idMax (){
-    let id = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      id.push(Number(localStorage.key(i)))
-    };
-    let idMaxLocal = Math.max(...id);
-    return (idMaxLocal === -Infinity) ? 1 : idMaxLocal + 1
+ function update(id){
+    let copyPost = JSON.parse(localStorage.getItem(id))
+    copyPost.editing = !copyPost.editing
+    localStorage.setItem(id,JSON.stringify(copyPost))
+    props.getPost();
   }
 
-  function savePost (){
-    localStorage.setItem(id,JSON.stringify({id,title,url,text,creatAtTime,editing}))
-     setTitle('')
-     setUrl('')
-     setText('')
-  }
-
-  function getPost (){
-    let posts =[];
-    for (let i = 0, length = localStorage.length; i < length; i++) {
-      posts.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-    }
-    setPosts(posts);
-  }
-
-  function sortPost(){
-   (course===true) ?
-   posts.sort((a, b) => a.creatAtTime > b.creatAtTime ? 1 : -1) :
-   posts.reverse();
-   setCourse(!course);
-    }
-
-  return(
-    <div>
-      <div id="head">
-       <h2>Hello,let's make a post</h2>
-       <p>Heading:<input placeholder ='What heading?' value={title} name="title" onChange={event=>setTitle(event.target.value)} /></p>
-       <p>Photo URL: <input placeholder ='What photo?' value={url} name="url" onChange={event=>setUrl(event.target.value)}/></p>
-       <p>Post:<textarea placeholder = "What is the text?" value={text} name="text" onChange={event=>setText(event.target.value)}></textarea></p>
-
-       <button id='save' onClick={savePost}>Send post</button>
-       <button id='publish' onClick={getPost}>Create post</button>
-       <button id ='sortPost' onClick={sortPost}>Sort by time &#8645;</button>
-
-      </div>
-        <Page posts={posts}
-              getPost={getPost}/>
-    </div>
-  )
+  function deletePost (id){
+  props.posts.filter(post=> post.id !== id);
+  localStorage.removeItem(id);
+  props.getPost();
 }
 
-export default App;
+  function renderPost(post){
+    if(post.editing === true){
+        return(
+         <div key ={post.id} className= 'Post' index={post.id}>
+          <Editing copyPost={post} getPost={props.getPost}/>
+         </div>
+        )
+      }else{
+        return redaction(post)
+      }
+    }
+
+  function redaction(post){
+    return(
+     <div key ={post.id} className= 'Post' index={post.id}>
+      <h2>{post.title}</h2>
+      <h3>{post.creatAt}</h3>
+      <h3>Time: {post.creatAtTime.slice(-8)} </h3>
+      <h4>Date: {post.creatAtTime.slice(0,8)} </h4>
+      <img src={post.url}/>
+      <div>{post.text}</div>
+      <button onClick={()=>deletePost(post.id)} >Dlete this {post.title} </button>
+      <button onClick={()=>update(post.id)} >Update this{post.title} </button>
+
+     </div>)
+   }
+   return(
+   <div id ="Posts" >
+    {props.posts.map((post) => renderPost(post))}
+   </div>
+  )
+
+}
+
+
+export default Page;
