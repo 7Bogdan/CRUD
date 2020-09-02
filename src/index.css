@@ -1,0 +1,47 @@
+input {
+    margin: 10px;
+    border: 2px solid black;
+    width: 280px;
+    display: block;
+    border-radius: 5px;
+}
+
+textarea {
+    cursor: pointer;
+    width: 300px;
+    height: 60px;
+    display: block;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+button {
+    margin: 8px;
+    border-radius: 5px;
+}
+
+
+div {
+    margin: 20px;
+    display: block;
+
+}
+
+#head{
+  width: 350px;
+  border-radius: 20px;
+  position: relative;
+  padding: 15px;
+  box-sizing: border-box;
+  border: 3px solid black;
+  margin-left: 40%;
+}
+
+
+.Post{
+  border: 3px solid #f5f2f0;
+  border-radius: 20px;
+  padding: 25px;
+	margin-right: 0px;
+  margin-left: 0px;
+  }
