@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Storage from './page/storage/Storage';
+import Posts from './page/posts/Posts'
 import './index.css';
 
 ReactDOM.render(
-  <App />,
+  <div>
+  <Storage />
+  <Posts/>
+  </div>,
 document.getElementById('root')
 );
