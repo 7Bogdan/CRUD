@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import idMax from "../supporting/idMax.js";
 import { setLocalStorage } from "../supporting/LocalStorage.js";
 
-function Storage() {
+function LocalStorage() {
   let [title, setTitle] = useState("");
   let [url, setUrl] = useState("");
   let [text, setText] = useState("");
@@ -17,7 +17,7 @@ function Storage() {
 
   return (
     <div className="save-post">
-      <h2>Hello,let's save a post</h2>
+      <h2>Hello,let's save a post in Local Storage</h2>
       <p>
         Heading:
         <input
@@ -46,11 +46,11 @@ function Storage() {
         ></textarea>
       </p>
 
-      <button onClick={() => savePost()}>
+      <button className="save" onClick={() => savePost()}>
         Save post
       </button>
     </div>
   );
 }
 
-export default Storage;
+export default LocalStorage;

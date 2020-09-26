@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {setLocalStorage} from '../supporting/LocalStorage.js'
+import {timeNow} from "../supporting/time.js";
+
 
 function Update (props) {
   let post = props.post
@@ -8,8 +10,8 @@ function Update (props) {
   let [text, setText] = useState(post.text);
   let id = post.id;
 
-  let updatePost= () => {
-    props.update(id)
+  let updatePost= (id) => {
+    props.endUpdate({id, title, url, text,creatAtTime:timeNow(),update:false})
     setLocalStorage(id, title, url, text)
   }
 
@@ -42,7 +44,7 @@ function Update (props) {
           onChange={(event) => setText(event.target.value)}
         ></textarea>
       </p>
-      <button onClick={() => updatePost()}>Update this post </button>
+      <button className ="update" onClick={() => updatePost(id)}>Update this post </button>
     </div>
   );
 }

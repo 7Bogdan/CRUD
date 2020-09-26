@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Storage from './page/storage/Storage';
+import LocalStorage from './page/storage/Storage';
 import Posts from './page/posts/Posts'
-import './index.css';
+import './style.css';
 
 ReactDOM.render(
   <div>
-  <Storage />
+  <LocalStorage />
   <Posts/>
   </div>,
 document.getElementById('root')

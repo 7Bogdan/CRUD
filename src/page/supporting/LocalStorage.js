@@ -1,4 +1,4 @@
-import timeNow from "./time.js";
+import {timeNow} from "./time.js";
 
 export let setLocalStorage = (id, title, url, text) => {
   localStorage.setItem(
@@ -15,12 +15,6 @@ export let getLocalPosts = () => {
   return interimPosts;
 };
 
-export let updateLocalPost = (id) => {
-  let interimPostLocal = JSON.parse(localStorage.getItem(id))
-  interimPostLocal.update = !interimPostLocal.update;
-  localStorage.setItem(id, JSON.stringify(interimPostLocal));
-};
-
 export let deleteLocalPost = (id) =>{
   localStorage.removeItem(id)
-}
+};
