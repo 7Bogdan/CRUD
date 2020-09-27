@@ -45,6 +45,12 @@ textarea {
   padding: 18px;
   transition: 0.3s;
 }
+.save:hover {
+  cursor: pointer;
+  box-shadow: 0 7px 7px #59b320;
+  background-position: 0 0;
+  transform: translateY(-5px);
+}
 
 .get-post {
   cursor: pointer;
@@ -60,6 +66,12 @@ textarea {
   background-size: 200% 200%;
   padding: 18px;
   transition: 0.3s;
+}
+.get-post:hover {
+  cursor: pointer;
+  box-shadow: 0 7px 7px #d16b29;
+  background-position: 0 0;
+  transform: translateY(-5px);
 }
 
 .sort-post {
@@ -77,6 +89,12 @@ textarea {
   padding: 18px;
   transition: 0.3s;
 }
+.sort-post:hover {
+  cursor: pointer;
+  box-shadow: 0 7px 7px #26a5d8;
+  background-position: 0 0;
+  transform: translateY(-5px);
+}
 
 .delete {
   cursor: pointer;
@@ -92,6 +110,12 @@ textarea {
   background-size: 200% 200%;
   padding: 18px;
   transition: 0.3s;
+}
+.delete:hover {
+  cursor: pointer;
+  box-shadow: 0 7px 7px #e22e1b;
+  background-position: 0 0;
+  transform: translateY(-5px);
 }
 
 .update {
@@ -109,38 +133,9 @@ textarea {
   padding: 18px;
   transition: 0.3s;
 }
-
-.get-post:hover {
-  cursor: pointer;
-  box-shadow: 0 7px 7px #d16b29;
-  background-position: 0 0;
-  transform: translateY(-5px);
-}
-
-.delete:hover {
-  cursor: pointer;
-  box-shadow: 0 7px 7px #e22e1b;
-  background-position: 0 0;
-  transform: translateY(-5px);
-}
-
 .update:hover {
   cursor: pointer;
   box-shadow: 0 7px 7px #8c6cbc;
-  background-position: 0 0;
-  transform: translateY(-5px);
-}
-
-.save:hover {
-  cursor: pointer;
-  box-shadow: 0 7px 7px #59b320;
-  background-position: 0 0;
-  transform: translateY(-5px);
-}
-
-.sort-post:hover {
-  cursor: pointer;
-  box-shadow: 0 7px 7px #26a5d8;
   background-position: 0 0;
   transform: translateY(-5px);
 }
